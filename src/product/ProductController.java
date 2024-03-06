@@ -2,62 +2,38 @@ package product;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import exceptions.NegativePriceException;
+import exceptions.NotFoundException;
 
 public class ProductController{
 
-    private ProductModel product;
+     List<ProductModel> products;
 
-    List<ProductController> products = new ArrayList<>();
-
-    public void Product(String barCode, String name, int priceInCents, int stock ){
-
-        this.product = new ProductModel(name, stock, priceInCents);
-        this.product.setBarCode(barCode);
-        this.product.setName(name);
-        this.product.setPriceInCents(priceInCents);
-        this.product.setStock(stock);
+    public ProductController(){
+        this.products = new ArrayList<>();
     }
 
-
-
-    public String getBarCode() {
-        return this.product.getBarCode();
-    }
-
-    public String getName() {
-        return this.product.getName();
-    }
-
-    public void setName(String name) {
-        this.product.setName(name);
-    }
-
-    public int getPriceInCents() {
-        return this.product.getPriceInCents();
-    }
-
-    public void setPriceInCents(int priceInCents) {
-        if (priceInCents < 0) {
-            try {
-                throw new NegativePriceException();
-            } catch (NegativePriceException e) {
-                e.printStackTrace();
-
+    public String create(ProductModel payload) throws NegativePriceException {
+        if (payload.getPriceInCents() < 0) {
+            throw new NegativePriceException();
         }
-    }
-    this.product.setPriceInCents(priceInCents);
+
+        products.add(payload);
+        return "Produto '" + payload.getName() + "' adicionado.";
     }
 
-    public int getStock() {
-        return this.product.getStock();
+    public List<ProductModel> read() {
+        return products;
     }
 
-    public void setStock(int stock) {
-        this.product.setStock(stock);
+    public int retrievePrice(String barCode) throws NotFoundException {
+        for (ProductModel product : products) {
+            if (product.getBarCode().equals(barCode)) {
+                return product.getPriceInCents();
+            }
+        }
+        throw new NotFoundException();
     }
-
 
 }
 
