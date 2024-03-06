@@ -1,26 +1,42 @@
-import product.ProductModel;
+import java.util.ArrayList;
+import java.util.List;
+
+import exceptions.NegativePriceException;
+import product.ProductController;
 
 public class main {
 
- public static void Main(String[] args) {
+
+
+    public static ProductController Main(String[] args) throws NegativePriceException {
         
-        ProductModel product = new ProductModel();
-
         
-        product.setBarCode("123456789");
-        product.setName("Product Name");
-        product.setPriceInCents(1000);
-        product.setStock(10);
-
+        List<ProductController> productList = new ArrayList<>();
         
-    
-        System.out.println("Barcode: " + product.getBarCode());
-        System.out.println("Name: " + product.getName());
-        System.out.println("Price in cents: " + product.getPriceInCents());
-        System.out.println("Stock: " + product.getStock());
-    }    
+        ProductController product1 = new ProductController();
+        product1.setName("Produto 1");
+        product1.setPriceInCents(1000);
+        product1.setStock(10);
+        productList.add(product1);
+
+        ProductController product2 = new ProductController();
+        product2.setName("Produto 2");
+        product2.setPriceInCents(2000);
+        product2.setStock(20);
+        productList.add(product2);
+
+     
+        for (ProductController products : productList) {
+            System.out.println("Código de barras: " + products.getBarCode());
+            System.out.println("Nome: " + products.getName());
+            System.out.println("Preço em centavos: " + products.getPriceInCents());
+            System.out.println("Estoque: " + products.getStock());
+            System.out.println();
+        }
+        
+        return (ProductController) productList;
 
 
+    }
 
-
-};
+    };

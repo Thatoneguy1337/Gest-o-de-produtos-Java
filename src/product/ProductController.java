@@ -1,13 +1,19 @@
 package product;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import exceptions.NegativePriceException;
 
 public class ProductController{
 
     private ProductModel product;
 
+    List<ProductController> products = new ArrayList<>();
+
     public void Product(String barCode, String name, int priceInCents, int stock ){
 
-        this.product = new ProductModel();
+        this.product = new ProductModel(name, stock, priceInCents);
         this.product.setBarCode(barCode);
         this.product.setName(name);
         this.product.setPriceInCents(priceInCents);
@@ -33,7 +39,15 @@ public class ProductController{
     }
 
     public void setPriceInCents(int priceInCents) {
-        this.product.setPriceInCents(priceInCents);
+        if (priceInCents < 0) {
+            try {
+                throw new NegativePriceException();
+            } catch (NegativePriceException e) {
+                e.printStackTrace();
+
+        }
+    }
+    this.product.setPriceInCents(priceInCents);
     }
 
     public int getStock() {
@@ -43,6 +57,7 @@ public class ProductController{
     public void setStock(int stock) {
         this.product.setStock(stock);
     }
+
 
 }
 
