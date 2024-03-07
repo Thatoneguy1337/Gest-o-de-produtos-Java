@@ -31,7 +31,7 @@ public class main {
         }
 
         
-        String barCode = "123456789";git 
+        String barCode = "123456789"; 
         try {
             int price = productController.retrievePrice(barCode);
             System.out.println("Preço do produto com código de barras " + barCode + ": " + price);
