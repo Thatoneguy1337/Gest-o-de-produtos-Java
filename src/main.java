@@ -1,12 +1,14 @@
+
 import exceptions.NegativePriceException;
 import exceptions.NotFoundException;
 import product.ProductController;
 import product.ProductModel;
 
-public class main {
-    public static void run(String[] args) {
+public class Main {
+    public static void main(String[] args) {
         ProductController productController = new ProductController();
 
+        String barCode;
         
         ProductModel newProduct = new ProductModel(null, 0, 0);
         newProduct.setName("Produto A");
@@ -31,7 +33,10 @@ public class main {
         }
 
         
-        String barCode = "123456789"; 
+
+
+
+        barCode = "3cc5db841fbf"; 
         try {
             int price = productController.retrievePrice(barCode);
             System.out.println("Preço do produto com código de barras " + barCode + ": " + price);
@@ -40,6 +45,4 @@ public class main {
         }
     }
 
-
-    
-    };
+};
