@@ -31,10 +31,6 @@ public class ProductModel {
         return barCode;
     }
 
-    public void setBarCode(String barCode) {
-        this.barCode = barCode;
-    }
-
     public String getName() {
         return name;
     }

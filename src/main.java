@@ -9,7 +9,6 @@ public class main {
 
         
         ProductModel newProduct = new ProductModel(null, 0, 0);
-        newProduct.setBarCode("123456789");
         newProduct.setName("Produto A");
         newProduct.setPriceInCents(1000); 
         newProduct.setStock(10);
@@ -32,7 +31,7 @@ public class main {
         }
 
         
-        String barCode = "123456789";
+        String barCode = "123456789";git 
         try {
             int price = productController.retrievePrice(barCode);
             System.out.println("Preço do produto com código de barras " + barCode + ": " + price);
