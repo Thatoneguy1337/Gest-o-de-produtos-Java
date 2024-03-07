@@ -6,10 +6,10 @@ de produtos simples com as seguintes funções: Criação, listagem geral e list
 
 Esta aplicação precisará do seguinte comando no powershell(caso tenha o pacotes Java/Oracle instalados em sua máquina):
 
-```json
+```powershell
 java -cp target Main
 
-# em caso de erro na sua aplicação rode o seguinte comando e logo em seguida o comando acima:
+em caso de erro na sua aplicação rode o seguinte comando e logo em seguida o comando acima:
 
 javac src/exceptions/NegativePriceException.java
 src/exceptions/NotFoundException.java
